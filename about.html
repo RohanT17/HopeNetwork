@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="header">
+    <nav role="navigation">
+      <div id="menuToggle">
+        <!--
+        A fake / hidden checkbox is used as click reciever,
+        so you can use the :checked selector on it.
+        -->
+        <input type="checkbox" />
+        
+        <!--
+        Some spans to act as a hamburger.
+        
+        They are acting like a real hamburger,
+        not that McDonalds stuff.
+        -->
+        <span></span>
+        <span></span>
+        <span></span>
+        
+        <!--
+        Too bad the menu has to be inside of the button
+        but hey, it's pure CSS magic.
+        -->
+        <ul id="menu">
+            <li><a href="{{url_for('home')}}" class="nav-link px-2 link-secondary txt-size">Home</a></li>
+            <li><a href="{{url_for('needhelp')}}" class="nav-link px-2 link-body-emphasis"> Need Help?</a></li>
+            <li><a href="{{url_for('volunteers')}}" class="nav-link px-2 link-body-emphasis"> Volunteers </a></li>
+            <li><a href="{{url_for('organizations')}}" class="nav-link px-2 link-body-emphasis"> Organizations </a></li>
+            <li><a href="{{url_for('about')}}" class="nav-link px-2 link-body-emphasis">About Us</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- <div class ="logo">
+      <img src="logo.png">
+    </div> -->
+    <img src="{{ url_for('static', filename='logo.png') }}" id="main_logo">
+      <div class="user_id">
+        
+        <div class="dropdown text-end">
+          
+          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+           
+            <img src="{{ url_for('static', filename='profile.png') }}" alt="mdo" width="55" height="55" class="rounded-circle" id="profile_image">
+    
+          </a>
+          <ul class="dropdown-menu text-small">
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalSignUp">Sign up</a></li>
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalLogIn" >Log in</a></li>
+          </ul>
+        </div>
+        <h6 id="hello_text">Hello, Brian</h6>
+  </div>
+  </div>
+  <div class="our_mission">
+  <h1> Our Mission </h1><br>
+    <p> At HopeNetwork, our mission is to create a world where everyone has access to the resources and
+        opportunities they need to thrive. We believe in the power of connection, the value of experience, and the 
+        potential of every individual.</p>
+  </div>
+  <!-- Modal -->
+<div class="modal fade" id="modalSignUp" tabindex="-1" data-bs-backdrop="static"  aria-labelledby="modalSignUpProject" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content" style="background-color: lightcyan;">
+<div class="modal-header">
+  <h1 class="modal-title fs-5" id="exampleModalLabel">Sign up</h1>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+
+  <!-- <form class="" name="signup_form">
+    <div class="form-floating mb-3">
+      <input type="email" name="email" class="form-control rounded-3 field" id="floatingInput" placeholder="name@example.com" required>
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" name="name" class="form-control rounded-3 field" id="floatingName" placeholder="Username" required>
+      <label for="floatingPassword">Password</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="password" name="password" class="form-control rounded-3 field" id="floatingPassword" placeholder="Password" required>
+      <label for="floatingPassword">Password</label>
+    </div> -->
+
+    <form name="signup_form">
+
+      <label for="name">Name</label>
+      <input type="text" name="name" class="field form-control rounded-3" placeholder="Name" required>
+
+      <div class="row">
+        <div class="col-12">
+          <label>Your current status: </label>
+        </div>
+        <div class="btn-group col-12" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-light highlight-button" onclick="setUserStatus('In need of help')">In need of help</button>
+          <button type="button" class="btn btn-light highlight-button" onclick="setUserStatus('Volunteer')">Volunteer</button>
+        </div>
+
+        <input type="hidden" name="userStatus" id="userStatus" value=""> <!-- Hidden input to store userStatus -->
+    </div>
+
+    <script>
+      function setUserStatus(status) {
+        document.getElementById('userStatus').value = status;
+      }
+    </script>
+    
+      <label for="email">Email</label>
+      <input type="email" name="email" class="field form-control rounded-3" placeholder="name@example.com" required>
+
+      <label for="password">Password</label>
+      <input type="password" name="password" class="field form-control rounded-3" placeholder="Password" required>
+
+      <p class="error error--hidden"></p>
+
+      <input type="submit" value="Sign Up" class="btn" style="border: 1px solid black;">
+    
+    </form>
+
+    <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+  </form>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalLogIn" tabindex="-1" data-bs-backdrop="static"  aria-labelledby="modalLogInProject" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+  <a href="{{url_for('register')}}"><h1 class="modal-title fs-5" id="exampleModalLabel">Log In</h1></a>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+
+  <form class="">
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+  </form>
+  
+</div>
+</div>
+</div>
+</div><br><br><br><br>
+<div class="donate">
+    <p>Do you want to help change lives?<br><button type="button" class="btn btn-primary" id="btn" data-toggle="modal" data-target="#myModal">Donate Now!</button></p>
+    
+  </div>
+<!-- Modal -->
+{% endblock %}
+
+
+
+

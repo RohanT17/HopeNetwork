@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block title %}Organizations{% endblock %}
+
+{% block content %}
+<header class="p-3 mb-3 border-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="{{url_for('home')}}" class="nav-link px-2 link-secondary txt-size">Home</a></li>
+          <li><a href="{{url_for('needhelp')}}" class="nav-link px-2 link-body-emphasis"> Need Help?</a></li>
+          <li><a href="{{url_for('volunteers')}}" class="nav-link px-2 link-body-emphasis"> Volunteers </a></li>
+          <li><a href="{{url_for('organizations')}}" class="nav-link px-2 link-body-emphasis"> Organizations </a></li>
+        </ul>
+
+        <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+        </form> -->
+
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/static/defaultlogo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small">
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalSignUp">Sign up</a></li>
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalLogIn" >Log in</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<div class="container col-xxl-8 px-4 py-5">
+<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+  <div class="col-10 col-sm-8 col-lg-6">
+    <img src="/static/homelessMainPhoto.jpeg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" loading="lazy">
+  </div>
+  <div class="col-lg-6">
+    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3"> Provide opportunities for newcomers to the workforce.</h1>
+    <p class="lead"> Complete your profile to show useful information to newcomers and volunteers. Newcomers and volunteers 
+      receive an instant notification the moment you post a job opening.
+    </p>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Complete Profile
+      </button> <!--popup-->
+      <a href="#" type="button" class="btn btn-outline-secondary btn-lg px-4"> Post a Job Opening </a> <!--new page-->
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalSignUp" tabindex="-1" data-bs-backdrop="static"  aria-labelledby="modalSignUpProject" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Sign up</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <!-- <form class="" name="signup_form">
+          <div class="form-floating mb-3">
+            <input type="email" name="email" class="form-control rounded-3 field" id="floatingInput" placeholder="name@example.com" required>
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" name="name" class="form-control rounded-3 field" id="floatingName" placeholder="Username" required>
+            <label for="floatingPassword">Password</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" name="password" class="form-control rounded-3 field" id="floatingPassword" placeholder="Password" required>
+            <label for="floatingPassword">Password</label>
+          </div> -->
+
+          <form name="signup_form">
+
+          <label for="name">Name</label>
+          <input type="text" name="name" class="field" required>
+  
+          <label for="email">Email</label>
+          <input type="email" name="email" class="field" required>
+  
+          <label for="password">Password</label>
+          <input type="password" name="password" class="field" required>
+
+          <p class="error error--hidden"></p>
+
+          </form>
+          
+          <!-- <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button> -->
+          <input type="submit" value="Sign Up" class="btn">
+          <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalLogIn" tabindex="-1" data-bs-backdrop="static"  aria-labelledby="modalLogInProject" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Log In</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form class="">
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+          </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+</div> 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> Complete Profile </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Select the category of the jobs you offer. </label><br>
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1"> Restaurant </label><br>
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1"> Retail </label><br>
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1"> Education </label><br>
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1"> Driving </label><br>
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1"> Cleaning </label><br>
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1"> Technology </label><br>
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1"> Repair </label><br><br>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea2"> Is there anything else you would like those in need of help to know? </label>
+            <textarea class="form-control" id="exampleFormControlTextarea2" rows="5"></textarea><br>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea2"> Is there anything else you would like volunteers to know? </label>
+            <textarea class="form-control" id="exampleFormControlTextarea2" rows="5"></textarea><br>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"> Submit </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+
